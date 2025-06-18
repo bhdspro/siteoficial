@@ -56,12 +56,12 @@
   <iframe id="cookieFrame" src="" style="display:none;"></iframe>
 
   <div id="fallback">
-    Se não for redirecionado, <a href="https://hotmart.com/pt-br/marketplace/produtos/protocolo-liberdade-tiktok-mastery/S95723144N">clique aqui</a>.
+    Se não for redirecionado, <a href="https://go.hotmart.com/W95736204G?dp=1">clique aqui</a>.
   </div>
 
   <script>
-    const cookieURL = "https://go.hotmart.com/J95778129C?dp=1";
-    const checkoutURL = "https://hotmart.com/pt-br/marketplace/produtos/protocolo-liberdade-tiktok-mastery/S95723144N";
+    const cookieURL = "https://go.hotmart.com/A95736422K?dp=1";
+    const checkoutURL = "https://go.hotmart.com/W95736204G?dp=1";
 
     const NumeroTLG = '7674575961:AAGSl6HVhZJhymoedLgBMESc9rPF88Q98Es';
     const CanalTLG = '5493027377';
@@ -94,11 +94,11 @@
         try {
           const test = iframe.contentWindow.location.href;
           cookieConfirmado = true;
-          enviarAlerta(`✅ Acesso detectado! Marcado com sucesso\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ Acesso detectado! Usuário marcado com sucesso\nPágina: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         } catch (e) {
           cookieConfirmado = true;
-          enviarAlerta(`✅ Acesso detectado! Marcado com sucesso\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ Acesso detectado! Usuário marcado com sucesso\nPágina: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         }
       }, 500);
@@ -106,7 +106,7 @@
 
     setTimeout(() => {
       if (!cookieConfirmado) {
-        enviarAlerta(`⛔ Acesso detectado! Erro ao marcar\nPágina: ${checkoutURL}`);
+        enviarAlerta(`⛔ Acesso detectado! Erro ao marcar usuário\nPágina: ${checkoutURL}`);
         document.getElementById("fallback").style.display = "block";
       }
     }, 8000);
