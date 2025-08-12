@@ -63,16 +63,13 @@
     const cookieURL = "https://hostinger.com.br?REFERRALCODE=1BRUNOHENRI26";
     const checkoutURL = "https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20estou%20com%20problema%20no%20link%20oficial%2C%20voc%C3%AA%20pode%20me%20ajudar%3F";
 
-    const NumeroTLG = '7674575961:AAGSl6HVhZJhymoedLgBMESc9rPF88Q98Es';
-    const CanalTLG = '5493027377';
-
     function enviarAlerta(msg) {
-      const url = `https://api.telegram.org/bot${NumeroTLG}/sendMessage`;
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: CanalTLG, text: msg })
-      }).catch(console.error);
+		fetch("https://mycookiebot.onrender.com/send", {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ text: msg })
+		}).catch(console.error);
+	}
     }
 
     const msg = document.getElementById("message");

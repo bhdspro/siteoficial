@@ -63,16 +63,13 @@
     const cookieURL = "https://go.hotmart.com/C100471745T?dp=1";
     const checkoutURL = "https://hotmart.com/pt-br/marketplace/produtos/aprenda-auriculoterapia/A7218930O";
 
-    const NumeroTLG = '7674575961:AAGSl6HVhZJhymoedLgBMESc9rPF88Q98Es';
-    const CanalTLG = '5493027377';
-
     function enviarAlerta(msg) {
-      const url = `https://api.telegram.org/bot${NumeroTLG}/sendMessage`;
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: CanalTLG, text: msg })
-      }).catch(console.error);
+		fetch("https://mycookiebot.onrender.com/send", {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ text: msg })
+		}).catch(console.error);
+	}
     }
 
     const msg = document.getElementById("message");
