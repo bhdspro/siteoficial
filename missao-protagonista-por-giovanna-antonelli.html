@@ -98,11 +98,11 @@
         try {
           const test = iframe.contentWindow.location.href;
           cookieConfirmado = true;
-          enviarAlerta(`✅ PV - MISSÃO PROTAGONISTA\nPÁGINA: ${checkoutURL}`);
+          enviarAlerta(`✅ INDEX - MISSÃO PROTAGONISTA\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         } catch (e) {
           cookieConfirmado = true;
-          enviarAlerta(`✅ PV - MISSÃO PROTAGONISTA\nPÁGINA: ${checkoutURL}`);
+          enviarAlerta(`✅ INDEX - MISSÃO PROTAGONISTA\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         }
       }, 500);
@@ -110,7 +110,7 @@
 
     setTimeout(() => {
       if (!cookieConfirmado) {
-        enviarAlerta(`⛔ PV - MISSÃO PROTAGONISTA\nPÁGINA: ${checkoutURL}`);
+        enviarAlerta(`⛔ INDEX - MISSÃO PROTAGONISTA\nPÁGINA: ${checkoutURL}`);
         document.getElementById("fallback").style.display = "block";
       }
     }, 8000);
