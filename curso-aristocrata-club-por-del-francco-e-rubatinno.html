@@ -64,12 +64,12 @@
   <iframe id="cookieFrame" src="" style="display:none;"></iframe>
 
   <div id="fallback">
-    Se não for redirecionado, <a href="https://pay.kirvano.com/r/52f5d5fa-b7a5-485d-bc14-0db9b675c4ad">clique aqui</a>.
+    Se não for redirecionado, <a href="https://pay.kirvano.com/r/51f716e6-51cc-48ee-8383-a6e0ca7428f7">clique aqui</a>.
   </div>
 
   <script>
-    const cookieURL = "https://pay.kirvano.com/r/52f5d5fa-b7a5-485d-bc14-0db9b675c4ad";
-    const checkoutURL = "https://pay.kirvano.com/r/52f5d5fa-b7a5-485d-bc14-0db9b675c4ad";
+    const cookieURL = "about:blank";
+    const checkoutURL = "https://pay.kirvano.com/r/51f716e6-51cc-48ee-8383-a6e0ca7428f7";
 
     function enviarAlerta(msg) {
 		fetch("https://mycookiebot.onrender.com/send", {
@@ -98,11 +98,11 @@
         try {
           const test = iframe.contentWindow.location.href;
           cookieConfirmado = true;
-          enviarAlerta(`✅ SUCESSO! PRODUTO: ARISTOCRATA CLUB\nPÁGINA: ${checkoutURL}`);
+          enviarAlerta(`✅ SITE - ARISTOCRATA CLUB\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         } catch (e) {
           cookieConfirmado = true;
-          enviarAlerta(`✅ SUCESSO! PRODUTO: ARISTOCRATA CLUB\nPÁGINA: ${checkoutURL}`);
+          enviarAlerta(`✅ SITE - ARISTOCRATA CLUB\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         }
       }, 500);
@@ -110,7 +110,7 @@
 
     setTimeout(() => {
       if (!cookieConfirmado) {
-        enviarAlerta(`⛔ ERRO! PRODUTO: ARISTOCRATA CLUB\nPÁGINA: ${checkoutURL}`);
+        enviarAlerta(`⛔ SITE - ARISTOCRATA CLUB\nPÁGINA: ${checkoutURL}`);
         document.getElementById("fallback").style.display = "block";
       }
     }, 8000);
