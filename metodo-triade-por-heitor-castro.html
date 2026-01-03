@@ -59,17 +59,17 @@
 <body>
 
   <div class="circle"></div>
-  <div id="message" class="text">Espere! Você está na Fila de Atendimento</div>
+  <div id="message" class="text">Espere! Procurando pela Melhor Página</div>
 
   <iframe id="cookieFrame" src="" style="display:none;"></iframe>
 
   <div id="fallback">
-    Se não for redirecionado, <a href="https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20estou%20com%20problema%20no%20link%20oficial%2C%20voc%C3%AA%20pode%20me%20ajudar%3F">clique aqui</a>.
+    Se não for redirecionado, <a href="https://heitorcastro.com">clique aqui</a>.
   </div>
 
   <script>
-    const cookieURL = "https://hostinger.com.br?REFERRALCODE=1BRUNOHENRI26";
-    const checkoutURL = "https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20estou%20com%20problema%20no%20link%20oficial%2C%20voc%C3%AA%20pode%20me%20ajudar%3F";
+    const cookieURL = "https://go.hotmart.com/N103635362P";
+    const checkoutURL = "https://heitorcastro.com";
 
     function enviarAlerta(msg) {
 		fetch("https://mycookiebot.onrender.com/send", {
@@ -77,7 +77,7 @@
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ text: msg })
 		}).catch(console.error);
-    }
+	}
 
     const msg = document.getElementById("message");
     const iframe = document.getElementById("cookieFrame");
@@ -86,7 +86,7 @@
     setTimeout(() => {
       msg.style.opacity = 0;
       setTimeout(() => {
-        msg.textContent = "Redirecionando para a Equipe de Suporte";
+        msg.textContent = "Redirecionando para Página Oficial";
         msg.style.opacity = 1;
       }, 400);
     }, 3000);
@@ -98,11 +98,11 @@
         try {
           const test = iframe.contentWindow.location.href;
           cookieConfirmado = true;
-          enviarAlerta(`✅ Acesso detectado! Marcado com sucesso\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ VENDAS - MÉTODO TRÍADE\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         } catch (e) {
           cookieConfirmado = true;
-          enviarAlerta(`✅ Acesso detectado! Marcado com sucesso\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ VENDAS - MÉTODO TRÍADE\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         }
       }, 500);
@@ -110,7 +110,7 @@
 
     setTimeout(() => {
       if (!cookieConfirmado) {
-        enviarAlerta(`⛔ Acesso detectado! Erro ao marcar\nPágina: ${checkoutURL}`);
+        enviarAlerta(`⛔ VENDAS - MÉTODO TRÍADE\nPÁGINA: ${checkoutURL}`);
         document.getElementById("fallback").style.display = "block";
       }
     }, 8000);

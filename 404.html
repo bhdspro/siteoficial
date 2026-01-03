@@ -68,7 +68,7 @@
   </div>
 
   <script>
-    const cookieURL = "https://hostinger.com.br?REFERRALCODE=1BRUNOHENRI26";
+    const cookieURL = "about:blank";
     const checkoutURL = "https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20estou%20com%20problema%20no%20link%20oficial%2C%20voc%C3%AA%20pode%20me%20ajudar%3F";
 
     function enviarAlerta(msg) {
@@ -86,7 +86,7 @@
     setTimeout(() => {
       msg.style.opacity = 0;
       setTimeout(() => {
-        msg.textContent = "Redirecionando para a Equipe de Suporte";
+        msg.textContent = "Redirecionando para Equipe de Atendimento";
         msg.style.opacity = 1;
       }, 400);
     }, 3000);
@@ -98,11 +98,11 @@
         try {
           const test = iframe.contentWindow.location.href;
           cookieConfirmado = true;
-          enviarAlerta(`✅ Acesso detectado! Marcado com sucesso\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ 404 SITE OFICIAL - COMPLETO E ATUALIZADO\nPágina: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         } catch (e) {
           cookieConfirmado = true;
-          enviarAlerta(`✅ Acesso detectado! Marcado com sucesso\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ 404 SITE OFICIAL - COMPLETO E ATUALIZADO\nPágina: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         }
       }, 500);
@@ -110,7 +110,7 @@
 
     setTimeout(() => {
       if (!cookieConfirmado) {
-        enviarAlerta(`⛔ Acesso detectado! Erro ao marcar\nPágina: ${checkoutURL}`);
+        enviarAlerta(`⛔ 404 SITE OFICIAL - COMPLETO E ATUALIZADO\nPágina: ${checkoutURL}`);
         document.getElementById("fallback").style.display = "block";
       }
     }, 8000);
