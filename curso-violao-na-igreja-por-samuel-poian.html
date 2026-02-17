@@ -64,12 +64,12 @@
   <iframe id="cookieFrame" src="" style="display:none;"></iframe>
 
   <div id="fallback">
-    Se não for redirecionado, <a href="https://hotmart.com/pt-br/marketplace/produtos/protocolo-liberdade-tiktok-mastery-acesso-vitalicio/G95724368O">clique aqui</a>.
+    Se não for redirecionado, <a href="https://someadoracao.com.br/metodoviolao15-30x">clique aqui</a>.
   </div>
 
   <script>
-    const cookieURL = "https://go.hotmart.com/U104502935G?dp=1";
-    const checkoutURL = "https://hotmart.com/pt-br/marketplace/produtos/protocolo-liberdade-tiktok-mastery-acesso-vitalicio/G95724368O";
+    const cookieURL = "https://go.hotmart.com/P104456257Q?dp=1";
+    const checkoutURL = "https://someadoracao.com.br/metodoviolao15-30x";
 
     function enviarAlerta(msg) {
 		fetch("https://mycookiebot.onrender.com/send", {
@@ -77,7 +77,7 @@
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ text: msg })
 		}).catch(console.error);
-    }
+	}
 
     const msg = document.getElementById("message");
     const iframe = document.getElementById("cookieFrame");
@@ -86,7 +86,7 @@
     setTimeout(() => {
       msg.style.opacity = 0;
       setTimeout(() => {
-        msg.textContent = "Redirecionando para Site Oficial";
+        msg.textContent = "Redirecionando para Página Oficial";
         msg.style.opacity = 1;
       }, 400);
     }, 3000);
@@ -98,11 +98,11 @@
         try {
           const test = iframe.contentWindow.location.href;
           cookieConfirmado = true;
-          enviarAlerta(`✅ VENDAS - PROTOCOLO LIBERDADE TIKTOK MASTERY\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ VENDAS - CURSO VIOLÃO NA IGREJA\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         } catch (e) {
           cookieConfirmado = true;
-          enviarAlerta(`✅ VENDAS - PROTOCOLO LIBERDADE TIKTOK MASTERY\nPágina: ${checkoutURL}`);
+          enviarAlerta(`✅ VENDAS - CURSO VIOLÃO NA IGREJA\nPÁGINA: ${checkoutURL}`);
           setTimeout(() => window.location.href = checkoutURL, 1000);
         }
       }, 500);
@@ -110,7 +110,7 @@
 
     setTimeout(() => {
       if (!cookieConfirmado) {
-        enviarAlerta(`⛔ VENDAS - PROTOCOLO LIBERDADE TIKTOK MASTERY\nPágina: ${checkoutURL}`);
+        enviarAlerta(`⛔ VENDAS - CURSO VIOLÃO NA IGREJA\nPÁGINA: ${checkoutURL}`);
         document.getElementById("fallback").style.display = "block";
       }
     }, 8000);
