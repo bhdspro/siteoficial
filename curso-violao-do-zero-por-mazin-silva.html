@@ -4,7 +4,7 @@
 
 	<script>
 		(function wakeRender() {
-			fetch("https://mycookiebot.onrender.com/", { method: "GET" })
+			fetch("https://mycookiebotnotification.onrender.com/", { method: "GET" })
 				.catch(console.error);
 		})();
 	</script>
@@ -82,7 +82,7 @@
     const checkoutURL = "https://mazinsilva.com.br/aprenda-a-tocar-violao-do-zero-2-0";
 
     function enviarAlerta(msg) {
-		fetch("https://mycookiebot.onrender.com/send", {
+		fetch("https://mycookiebotnotification.onrender.com/send", {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ text: msg })

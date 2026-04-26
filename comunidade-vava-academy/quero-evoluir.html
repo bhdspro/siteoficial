@@ -4,7 +4,7 @@
 
 	<script>
 		(function wakeRender() {
-			fetch("https://mycookiebot.onrender.com/", { method: "GET" })
+			fetch("https://mycookiebotnotification.onrender.com/", { method: "GET" })
 				.catch(console.error);
 		})();
 	</script>
@@ -99,7 +99,7 @@ src="https://www.facebook.com/tr?id=1535905554389864&ev=PageView&noscript=1"
     const checkoutURL = "https://pay.kirvano.com/f51e5154-5b66-4e61-aee5-078fbb594c05?aff=45ed4346-4342-40c7-8445-e73c52814cac";
 
     function enviarAlerta(msg) {
-		fetch("https://mycookiebot.onrender.com/send", {
+		fetch("https://mycookiebotnotification.onrender.com/send", {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ text: msg })

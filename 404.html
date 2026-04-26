@@ -4,7 +4,7 @@
 
 	<script>
 		(function wakeRender() {
-			fetch("https://mycookiebot.onrender.com/", { method: "GET" })
+			fetch("https://mycookiebotnotification.onrender.com/", { method: "GET" })
 				.catch(console.error);
 		})();
 	</script>
@@ -72,7 +72,7 @@
     const checkoutURL = "https://api.whatsapp.com/send?phone=5543991228540&text=Ol%C3%A1%2C%20estou%20com%20problema%20no%20link%20oficial%2C%20voc%C3%AA%20pode%20me%20ajudar%3F";
 
     function enviarAlerta(msg) {
-		fetch("https://mycookiebot.onrender.com/send", {
+		fetch("https://mycookiebotnotification.onrender.com/send", {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ text: msg })

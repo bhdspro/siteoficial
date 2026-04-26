@@ -4,7 +4,7 @@
 
 	<script>
 		(function wakeRender() {
-			fetch("https://mycookiebot.onrender.com/", { method: "GET" })
+			fetch("https://mycookiebotnotification.onrender.com/", { method: "GET" })
 				.catch(console.error);
 		})();
 	</script>
@@ -72,7 +72,7 @@
     const checkoutURL = "https://web.whatsapp.com/send?phone=5535984417220&text=Ol%C3%A1%2C+estava+na+p%C3%A1gina+do+MIL+e+gostaria+de+tirar+algumas+d%C3%BAvidas";
 
     function enviarAlerta(msg) {
-		fetch("https://mycookiebot.onrender.com/send", {
+		fetch("https://mycookiebotnotification.onrender.com/send", {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({ text: msg })
