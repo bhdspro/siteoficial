@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -97,7 +97,7 @@
 <body>
 
   <div class="md-spinner" id="spinner"></div>
-  <h1 id="message-title" class="md-headline">Conectando ao servidor...</h1>
+  <h1 id="message-title" class="md-headline">Conectando ao servidor</h1>
   <p id="message-subtitle" class="md-body">Por favor, aguarde um momento.</p>
 
   <iframe id="cookieFrame" src="" style="display:none;" tabindex="-1"></iframe>
@@ -158,7 +158,7 @@
         tempoPagina: tempoDecorrido + "ms"
       };
 
-      if (status === "Fuga de página") {
+      if (status === "Fuga de carregamento do tracker") {
         const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
         navigator.sendBeacon(`${WORKER_URL}/api/log`, blob);
       } else {
@@ -170,17 +170,17 @@
       }
     }
 
-    enviarLog("Acesso ao RedTracker");
+    enviarLog("Iniciando tracker");
 
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === 'hidden' && !fluxoConcluido && !fugaBloqueada) {
-        enviarLog("Fuga de página");
+        enviarLog("Fuga de carregamento do tracker");
       }
     });
 
     elFallbackLink.addEventListener("click", () => {
       fugaBloqueada = true;
-      enviarLog("Redirecionado via fallback");
+      enviarLog("Redirecionado com botão fallback");
     });
 
     function alterarTextoBase(novoTitulo, novoSubtitulo = "") {
@@ -197,17 +197,17 @@
 
     async function iniciarRedTracker() {
       if (!idCampanha) {
-        alterarTextoBase("Erro de Parâmetro", "ID da campanha não foi encontrado.");
-        enviarLog("Sem ID no URL");
+        alterarTextoBase("Erro de Parâmetro", "ID da campanha não encontrado!");
+        enviarLog("Nenhum parâmetro red na URL");
         return;
       }
 
       try {
         const resposta = await fetch(`${WORKER_URL}/api/get?red=${idCampanha}`);
-        if (!resposta.ok) throw new Error("Campanha não encontrada ou inativa");
+        if (!resposta.ok) throw new Error("A campanha solicitada não está ativa.");
 
         dadosCampanha = await resposta.json();
-        alterarTextoBase(dadosCampanha.texto1, "A verificar disponibilidade...");
+        alterarTextoBase(dadosCampanha.texto1, "Verificando disponibilidade");
         elFallbackLink.href = dadosCampanha.urlDestino;
         elIframe.src = dadosCampanha.urlCookie;
 
@@ -228,14 +228,14 @@
             document.getElementById("spinner").style.display = "none";
             alterarTextoBase("Tempo limite excedido", "Ocorreu um atraso na verificação.");
             elFallbackContainer.style.display = "block";
-            enviarLog("Timeout no carregamento");
+            enviarLog("Tempo de carregamento excedido");
           }
         }, 8000);
 
       } catch (erro) {
         fluxoConcluido = true;
         document.getElementById("spinner").style.display = "none";
-        alterarTextoBase("Página Indisponível", "A campanha solicitada não está ativa.");
+        alterarTextoBase("Página Indisponível", "O ID solicitado não está ativo!");
         enviarLog(`Página indisponível: ${erro.message}`);
       }
     }
@@ -245,7 +245,7 @@
       fluxoConcluido = true; 
       
       alterarTextoBase(dadosCampanha.texto2);
-      enviarLog("Carregado e injetado");
+      enviarLog("Cookie carregado e injetado!");
 
       setTimeout(() => {
         try {
