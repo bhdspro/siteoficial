@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>⚡ RedTracker</title>
   
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="preconnect" href="https://api.redtracker.grupobhds.com">
+  <link rel="dns-prefetch" href="https://api.redtracker.grupobhds.com">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -154,11 +159,12 @@
         status: status,
         produto: dadosCampanha.produto,
         gclid: gclid,
-        origem: document.referrer ? "Referrer: " + document.referrer : "Direto",
+        origem: document.referrer ? "Origem - " + document.referrer : "Origem - Direta",
         tempoPagina: tempoDecorrido + "ms"
       };
 
-      if (status === "Fuga de carregamento do tracker") {
+      // sendBeacon é ideal para garantir o envio quando a página está descarregando
+      if (status === "Fuga de carregamento do tracker" || status === "Fuga da página de destino") {
         const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
         navigator.sendBeacon(`${WORKER_URL}/api/log`, blob);
       } else {
@@ -172,9 +178,17 @@
 
     enviarLog("Iniciando tracker");
 
+    // Detectar fuga
     document.addEventListener("visibilitychange", () => {
       if (document.visibilityState === 'hidden' && !fluxoConcluido && !fugaBloqueada) {
         enviarLog("Fuga de carregamento do tracker");
+      }
+    });
+
+    // Detectar usuário voltando pelo botão "Voltar" do navegador (BFCache)
+    window.addEventListener('pageshow', (event) => {
+      if (event.persisted && fluxoConcluido) {
+        enviarLog("Fuga da página de destino");
       }
     });
 
@@ -222,6 +236,7 @@
           }, 800); 
         };
 
+        // Mantido em 8 segundos (8000ms) conforme diretriz para ITP/Apple
         setTimeout(() => {
           if (!fluxoConcluido) {
             fluxoConcluido = true;
